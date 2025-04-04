@@ -6,6 +6,9 @@ const PROJECTS = [];
 const initProjects = () => {
 
     PROJECTS.push(new Project('Test', 'Test description'));
+    PROJECTS.push(new Project('Test2', 'Test description'));
+    PROJECTS.push(new Project('Test3', 'Test description'));
+    PROJECTS.push(new Project('Test4', 'Test description'));
 
     refreshProjects();
 };
@@ -30,10 +33,8 @@ const showProjects = () => {
         let buttonWrapperEl = createDomElement('buttonWrapper', 'div', ['flex', 'items-center', 'gap-2']);
         let editButtonEl = createButton('editProjectButton', 'button', ['bg-emerald-400', 'hover:bg-emerald-500']);
         let deleteButtonEl = createButton('deleteProjectButton', 'button', ['bg-red-400', 'hover:bg-red-500']);
-
-        console.log(project.id);
         
-        projectWrapperEl.dataset.id = project.id; // TODO: ADD ID TO PROJECT CONSTRUCTOR
+        projectWrapperEl.dataset.id = project.id;
 
         projectNameEl.textContent = project.title;
         editButtonEl.textContent = 'Edit';
@@ -48,12 +49,15 @@ const showProjects = () => {
 
 const handleProjectDeletion = (event) => {
     let closestProject = event.target.closest('#project');
-    let projectIndex = getProjectIndexById(parseInt(closestProject.dataset.id)); // When we add UUID then remove the parseInt function.
+    let projectIndex = getProjectIndexById(closestProject.dataset.id);
+
+    // console.log(closestProject);
 
     if(projectIndex < 0) return;
 
     PROJECTS.splice(projectIndex, 1);
     refreshProjects();
+
     event.preventDefault();
 };
 
@@ -62,11 +66,13 @@ const getProjectIndexById = (id) => {
 };
 
 const handleEventListeners = () => {
-    let deleteButtonEl = document.querySelector('#deleteProjectButton');
+    let deleteButtonsEl = document.querySelectorAll('#deleteProjectButton');
 
-    if(!deleteButtonEl) return;
+    if(!deleteButtonsEl) return;
 
-    deleteButtonEl.addEventListener('click', handleProjectDeletion);
+    deleteButtonsEl.forEach((button) => {
+        button.addEventListener('click', handleProjectDeletion);
+    })
 };
 
 
