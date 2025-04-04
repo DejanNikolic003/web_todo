@@ -5,7 +5,14 @@ class Project {
         this.id = uuidv4();
         this.title = title;
         this.description = description;
+        this.tasks = [];
     }
+
+    addTask(task) {
+        this.tasks.push(task);
+    }
+
+    
 }
 
 export default Project;

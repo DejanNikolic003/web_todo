@@ -4,12 +4,6 @@ import Project from "../models/Project";
 const PROJECTS = [];
 
 const initProjects = () => {
-
-    PROJECTS.push(new Project('Test', 'Test description'));
-    PROJECTS.push(new Project('Test2', 'Test description'));
-    PROJECTS.push(new Project('Test3', 'Test description'));
-    PROJECTS.push(new Project('Test4', 'Test description'));
-
     refreshProjects();
 };
 
@@ -50,8 +44,6 @@ const showProjects = () => {
 const handleProjectDeletion = (event) => {
     let closestProject = event.target.closest('#project');
     let projectIndex = getProjectIndexById(closestProject.dataset.id);
-
-    // console.log(closestProject);
 
     if(projectIndex < 0) return;
 
