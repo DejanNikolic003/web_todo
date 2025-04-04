@@ -10,6 +10,7 @@ const initTasks = () => {
 
 const refreshTasks= () => {
     showTasks();
+    handleEventListeners();
 };
 
 const showTasks = () => {
@@ -33,6 +34,8 @@ const showTasks = () => {
         let taskDoneButtonEl = createButton('doneTaskButton', 'button', ['bg-yellow-400', 'hover:bg-yellow-500']);
         let taskDeleteButtonEl = createButton('deleteTaskButton', 'button', ['bg-red-400', 'hover:bg-red-500']);
 
+        taskWrapperEl.dataset.id = task.id;
+
         taskNameEl.textContent = task.title;
         taskDescEl.textContent = task.description;
         taskDateEl.textContent = task.dueDate;
@@ -53,8 +56,29 @@ const showTasks = () => {
     }));
 };
 
-const handleEventListeners = () => {
+const handleTaskDeletion = (event) => {
+    let closestTask = event.target.closest('#task');
+    let taskIndex = getTaskIndexById(closestTask.dataset.id);
+
+    if(taskIndex < 0) return;
+
+    TASKS.splice(taskIndex, 1);
     
+    refreshTasks();
+
+    event.preventDefault();
+};
+
+const getTaskIndexById = (id) => {
+    return TASKS.findIndex((task) => task.id === id);
+};
+
+const handleEventListeners = () => {
+    let taskDeleteButtonsEl = document.querySelectorAll('#deleteTaskButton');
+
+    taskDeleteButtonsEl.forEach((button) => {
+        button.addEventListener('click', handleTaskDeletion);
+    });
 };
 
 
