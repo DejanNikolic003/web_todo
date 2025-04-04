@@ -7,6 +7,29 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
-    
+    <div class="grid grid-cols-10 grid-rows-5">
+        <div class="row-span-5 col-span-2">
+            <div class="transition duration-200 ease-out border-r border-gray-200 h-screen sticky top-0 px-2 py-2 flex flex-col items-start">
+                <div class="w-full flex items-center justify-between">
+                    <h1 class="text-2xl w-full">Projects</h1>
+                    <button>add</button>
+                </div>
+                <div class="project-container w-full mt-2">
+                    <div class="project flex items-center justify-between gap-2 ">
+                        <p>Project Name</p>
+                        <div>
+                            <button>edit</button>
+                            <button>delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-8 row-span-6">
+            <main class="p-2">
+                <h1 class="text-2xl w-full">Tasks</h1>
+            </main>
+        </div>
+    </div>
 </body>
 </html>
