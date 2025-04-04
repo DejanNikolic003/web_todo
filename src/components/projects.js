@@ -19,7 +19,10 @@ const refreshProjects = () => {
 };
 
 const showProjects = () => {
-    if(!PROJECTS.length) return;
+    if(!PROJECTS.length) {
+        projectContainerEl.textContent = 'No projects.'
+        return
+    };
 
     projectContainerEl.append(...PROJECTS.map((project) => {
         let projectWrapperEl = createDomElement('project', 'div', ['flex', 'items-center', 'justify-between', 'gap-2']);
@@ -28,6 +31,8 @@ const showProjects = () => {
         let editButtonEl = createButton('editProjectButton', 'button', ['bg-emerald-400', 'hover:bg-emerald-500']);
         let deleteButtonEl = createButton('deleteProjectButton', 'button', ['bg-red-400', 'hover:bg-red-500']);
 
+        console.log(project.id);
+        
         projectWrapperEl.dataset.id = project.id; // TODO: ADD ID TO PROJECT CONSTRUCTOR
 
         projectNameEl.textContent = project.title;
@@ -43,10 +48,12 @@ const showProjects = () => {
 
 const handleProjectDeletion = (event) => {
     let closestProject = event.target.closest('#project');
-    let projectIndex = getProjectIndexById(closestProject.dataset.id);
+    let projectIndex = getProjectIndexById(parseInt(closestProject.dataset.id)); // When we add UUID then remove the parseInt function.
 
-    console.log();
+    if(projectIndex < 0) return;
 
+    PROJECTS.splice(projectIndex, 1);
+    refreshProjects();
     event.preventDefault();
 };
 
@@ -56,7 +63,9 @@ const getProjectIndexById = (id) => {
 
 const handleEventListeners = () => {
     let deleteButtonEl = document.querySelector('#deleteProjectButton');
-    
+
+    if(!deleteButtonEl) return;
+
     deleteButtonEl.addEventListener('click', handleProjectDeletion);
 };
 
