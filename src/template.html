@@ -9,25 +9,40 @@
 <body>
     <div class="grid grid-cols-10 grid-rows-5">
         <div class="row-span-5 col-span-2">
-            <div class="transition duration-200 ease-out border-r border-gray-200 h-screen sticky top-0 px-2 py-2 flex flex-col items-start">
-                <div class="w-full flex items-center justify-between">
+            <div class="transition duration-200 ease-out border-r border-gray-200 h-screen sticky top-0 flex flex-col items-start">
+                <div class="w-full flex items-center justify-between px-2 py-2 ">
                     <h1 class="text-2xl w-full">Projects</h1>
-                    <button>add</button>
+                    <button type="button" class="transition hover:text-emerald-500 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-plus-icon lucide-circle-plus"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                    </button>
                 </div>
-                <div class="project-container w-full mt-2">
-                    <div class="project flex items-center justify-between gap-2 ">
+                <div class="w-full h-[1px] bg-gray-200"></div>
+            
+                <div class="project-container w-full px-2 py-2 ">
+                    <!-- <div class="project flex items-center justify-between gap-2 ">
                         <p>Project Name</p>
                         <div>
                             <button>edit</button>
                             <button>delete</button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
         <div class="col-span-8 row-span-6">
-            <main class="p-2">
-                <h1 class="text-2xl w-full">Tasks</h1>
+            <main>
+                <div class="w-full flex items-center justify-between px-2 py-2 ">
+                    <h1 class="text-2xl w-full">Tasks</h1>
+                    <button type="button" class="transition hover:text-emerald-500 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-plus-icon lucide-circle-plus"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                    </button>
+                </div>
+                <div class="w-full h-[1px] bg-gray-200"></div>
+                <div class="task-container w-full px-2 py-2 ">
+                    <!-- <div class="task flex items-center justify-between gap-2 ">
+                       
+                    </div> -->
+                </div>
             </main>
         </div>
     </div>
