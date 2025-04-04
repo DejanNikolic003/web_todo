@@ -8,7 +8,6 @@ const initProjects = () => {
 };
 
 const refreshProjects = () => {
-    // Remove all the child elements of the project container.
     projectContainerEl.innerHTML = '';
 
     showProjects();
@@ -17,8 +16,8 @@ const refreshProjects = () => {
 
 const showProjects = () => {
     if(!PROJECTS.length) {
-        projectContainerEl.textContent = 'No projects.'
-        return
+        projectContainerEl.textContent = 'No projects.';
+        return;
     };
 
     projectContainerEl.append(...PROJECTS.map((project) => {
