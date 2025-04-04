@@ -30,9 +30,9 @@ const showTasks = () => {
         let taskDescEl = createDomElement('taskDesc', 'p', ['text-sm', 'text-gray-500']);
         let taskDateEl = createBadge('taskDate', 'p', ['bg-sky-100', 'text-sky-400']);
         let taskPriorityEl = createBadge('taskPriority', 'p', ['bg-orange-100', 'text-orange-400']);
-        let taskEditButtonEl = createButton('editTaskButton', 'button', ['bg-emerald-400', 'hover:bg-emerald-500']);
-        let taskDoneButtonEl = createButton('doneTaskButton', 'button', ['bg-yellow-400', 'hover:bg-yellow-500']);
-        let taskDeleteButtonEl = createButton('deleteTaskButton', 'button', ['bg-red-400', 'hover:bg-red-500']);
+        let taskEditButtonEl = createButton('editTaskButton', 'button', ['bg-emerald-500', 'hover:bg-emerald-600']);
+        let taskDoneButtonEl = createButton('doneTaskButton', 'button', ['bg-cyan-500', 'hover:bg-cyan-600']);
+        let taskDeleteButtonEl = createButton('deleteTaskButton', 'button', ['bg-red-500', 'hover:bg-red-600']);
 
         taskWrapperEl.dataset.id = task.id;
 
