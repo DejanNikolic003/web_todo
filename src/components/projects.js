@@ -8,11 +8,15 @@ const initProjects = () => {
 };
 
 const refreshProjects = () => {
-
+    showProjects();
 };
 
 const showProjects = () => {
+    if(!PROJECTS.length) return;
 
+    projectContainerEl.append(...PROJECTS.map((project) => {
+        console.log(project);
+    }));
 };
 
 
