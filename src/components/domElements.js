@@ -1,6 +1,12 @@
 export const projectContainerEl = document.querySelector('.project-container');
 export const taskContainerEl = document.querySelector('.task-container');
-export const modalEl = document.querySelector('#modal');
+export const openProjectDialogEl = document.querySelector('#openProjectDialog');
+
+export const createProjectButtonEl = document.querySelector('#createProjectButton');
+export const closeDialogEl = document.querySelector('#cancelButton');
+
+export const projectTitleInputEl = document.querySelector('#projectTitle');
+export const createProjectDialogEl = document.querySelector('#createProject');
 
 const BASE_BUTTON_STYLES = ['inline-flex',  'justify-center', 'rounded-md', 'px-2', 'py-1', 'text-sm', 'lowercase', 'text-white', 'shadow-xs', 'transition', 'cursor-pointer'];
 const BASE_BADGE_STYLES  = ['px-2', 'py-1','rounded-md', 'text-sm', 'lowercase'];
@@ -29,18 +35,16 @@ export const createBadge = (id, type, classes) => {
     return element;
 }
 
-export const showModal = (type) => {
-    const closeModalButtonEl = document.querySelector('#closeModalButton');
+export const showDialog = (type) => {
+    type.setAttribute('open', true);
 
-    modalEl.classList.remove('hidden');
-
-    if(type === 'taskModal') {
-        console.log('taskModal');
-    }
-
-    closeModalButtonEl.addEventListener('click', closeModal);
+    closeDialogEl.addEventListener('click', (event) => {
+        closeDialog(type);
+        event.preventDefault();
+    });
 };
 
-const closeModal = () => {
-    modalEl.classList.add('hidden');
-};
+export const closeDialog = (type) => {
+    type.close();
+}
+

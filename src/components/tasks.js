@@ -8,7 +8,7 @@ const initTasks = () => {
     refreshTasks();
 };
 
-const refreshTasks= () => {
+const refreshTasks = () => {
     showTasks();
     handleEventListeners();
 };
@@ -75,10 +75,13 @@ const getTaskIndexById = (id) => {
 
 const handleEventListeners = () => {
     let taskDeleteButtonsEl = document.querySelectorAll('#deleteTaskButton');
+    let openModalButtonEl = document.querySelector('#openTaskModal');
 
     taskDeleteButtonsEl.forEach((button) => {
         button.addEventListener('click', handleTaskDeletion);
     });
+
+  
 };
 
 

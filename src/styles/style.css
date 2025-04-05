@@ -1,0 +1,15 @@
+dialog {
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 10;
+    margin-top: 10px;
+    border: none;
+    border-radius: 1rem;
+    text-align: center;
+  }
+  
+  
+  /* dialog::backdrop {
+    background-color: var(--dialog-backdrop);
+  } */

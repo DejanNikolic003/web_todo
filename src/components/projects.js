@@ -1,9 +1,16 @@
-import { projectContainerEl, modalEl, createDomElement, createButton, showModal } from "./domElements";
+import { projectContainerEl, createDomElement, 
+    createButton, openProjectDialogEl, 
+    createProjectDialogEl, showDialog,
+    createProjectButtonEl, projectTitleInputEl, 
+    closeDialog} from "./domElements";
 import Project from "../models/Project";
 
 const PROJECTS = [];
 
 const initProjects = () => {
+
+    PROJECTS.push(new Project('test'));
+
     refreshProjects();
 };
 
@@ -40,6 +47,22 @@ const showProjects = () => {
     }));
 };
 
+const handleProjectCreation = (event) => {
+    let projectTitle = projectTitleInputEl.value;
+
+    if(projectTitle.trim() === '') {
+        console.log('error');
+        return;
+    }
+
+    PROJECTS.push(new Project(projectTitle));
+    refreshProjects();
+    closeDialog(createProjectDialogEl);
+    
+    event.preventDefault();
+};
+
+
 const handleProjectDeletion = (event) => {
     let closestProject = event.target.closest('#project');
     let projectIndex = getProjectIndexById(closestProject.dataset.id);
@@ -58,16 +81,20 @@ const getProjectIndexById = (id) => {
 
 const handleEventListeners = () => {
     let deleteButtonsEl = document.querySelectorAll('#deleteProjectButton');
-    let openModalButtonEl = document.querySelector('#openProjectModal');
+
+
     if(!deleteButtonsEl) return;
 
     deleteButtonsEl.forEach((button) => {
         button.addEventListener('click', handleProjectDeletion);
-    })
-
-    openModalButtonEl.addEventListener('click', () => {
-        showModal();
     });
+
+    openProjectDialogEl.addEventListener('click', () => {
+        showDialog(createProjectDialogEl);
+    });
+
+    createProjectButtonEl.addEventListener('click', handleProjectCreation);
+
 };
 
 
