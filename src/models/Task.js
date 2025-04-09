@@ -9,6 +9,10 @@ class Task {
         this.priority = priority;
         this.done = done;
     }
+
+    changeState() {
+        this.done = !this.done;
+    }
 }
 
 export default Task;
