@@ -48,3 +48,43 @@ export const closeDialog = (type) => {
     type.close();
 }
 
+export const createTaskDomElements = (task) => {
+    let taskWrapperEl = createDomElement('task', 'div', ['flex', 'items-center', 'justify-between', 'gap-2']);
+    let taskInfoWrapperEl = createDomElement('taskInfoWrapper', 'div');
+    let taskDateWrapper = createDomElement('taskDateWrapper', 'div');
+    let taskStateWrapper = createDomElement('taskStateWrapper', 'div');
+    let taskPriorityWrapper = createDomElement('taskPriorityWrapper', 'div');
+    let taskButtonsWrapper = createDomElement('taskButtonsWrapper', 'div', ['space-x-2']);
+
+    let taskNameEl = createDomElement('taskName', 'p');
+    let taskDescEl = createDomElement('taskDesc', 'p', ['text-sm', 'text-gray-500']);
+    let taskStateEl = createBadge('taskState', 'p', ['bg-sky-100', 'text-sky-400']);
+    let taskDateEl = createBadge('taskDate', 'p', ['bg-sky-100', 'text-sky-400']);
+    let taskPriorityEl = createBadge('taskPriority', 'p', ['bg-orange-100', 'text-orange-400']);
+    let taskEditButtonEl = createButton('editTaskButton', 'button', ['bg-emerald-500', 'hover:bg-emerald-600']);
+    let taskDoneButtonEl = createButton('doneTaskButton', 'button', ['bg-cyan-500', 'hover:bg-cyan-600']);
+    let taskDeleteButtonEl = createButton('deleteTaskButton', 'button', ['bg-red-500', 'hover:bg-red-600']);
+
+    taskWrapperEl.dataset.id = task.id;
+
+    taskNameEl.textContent = task.title;
+    taskDescEl.textContent = task.description;
+    taskStateEl.textContent = task.done ? 'Yes' : 'No';
+    taskDateEl.textContent = task.dueDate;
+    taskPriorityEl.textContent = task.priority;
+    taskEditButtonEl.textContent = 'Edit';
+    taskDoneButtonEl.textContent = task.done ? 'Undo' : 'Done';
+    taskDeleteButtonEl.textContent = 'Delete';
+
+
+    taskInfoWrapperEl.append(taskNameEl, taskDescEl);
+    taskDateWrapper.append(taskDateEl);
+    taskStateWrapper.append(taskStateEl);
+    taskPriorityWrapper.append(taskPriorityEl);
+    taskButtonsWrapper.append(taskEditButtonEl, taskDeleteButtonEl, taskDoneButtonEl);
+
+    taskWrapperEl.append(taskInfoWrapperEl, taskStateWrapper, taskDateWrapper, taskPriorityWrapper, taskButtonsWrapper);
+
+    return taskWrapperEl;
+}
+
